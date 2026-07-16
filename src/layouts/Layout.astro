@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 
+
 interface Props {
   title?: string;
   description?: string;
@@ -26,6 +27,9 @@ const {
   <body class="bg-cream text-espresso antialiased">
     <slot />
 
-    <script type="module" src="/src/scripts/main.ts"></script>
+    <script>
+      import "../scripts/main.ts";
+    </script>
+
   </body>
 </html>
