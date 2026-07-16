@@ -1,0 +1,120 @@
+---
+const links = [
+  { href: '#sobre-nosotros', label: 'Nosotros' },
+  { href: '#menu', label: 'Menú' },
+  { href: '#galeria', label: 'Galería' },
+  { href: '#opiniones', label: 'Opiniones' },
+  { href: '#ubicacion', label: 'Ubicación' },
+];
+---
+
+<header
+  id="navbar"
+  class="fixed top-0 inset-x-0 z-50 transition-colors duration-500"
+  data-state="top"
+>
+  <nav class="mx-auto max-w-6xl flex items-center justify-between px-6 md:px-10 py-4">
+    <a href="#inicio" class="font-display text-xl md:text-2xl font-semibold tracking-wide text-cream">
+      NombreMarca
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-cream/90">
+      {links.map((link) => (
+        <li>
+          <a href={link.href} class="hover:text-latte transition-colors duration-300">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a
+      href="#ubicacion"
+      class="hidden md:inline-flex items-center rounded-full border border-cream/40 px-5 py-2 text-sm text-cream hover:bg-cream hover:text-espresso transition-colors duration-300"
+    >
+      Visítanos
+    </a>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden text-cream w-9 h-9 flex flex-col justify-center items-center gap-1.5"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+    >
+      <span class="hamburger-line block w-6 h-0.5 bg-current transition-transform duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-current transition-opacity duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-current transition-transform duration-300"></span>
+    </button>
+  </nav>
+
+  <ul
+    id="mobile-menu"
+    class="md:hidden hidden flex-col items-center gap-6 bg-mocha text-cream py-8 text-lg font-medium"
+  >
+    {links.map((link) => (
+      <li>
+        <a href={link.href} class="mobile-link block py-2 px-6">
+          {link.label}
+        </a>
+      </li>
+    ))}
+    <li>
+      <a
+        href="#ubicacion"
+        class="mobile-link inline-block mt-2 rounded-full border border-cream/50 px-8 py-3"
+      >
+        Visítanos
+      </a>
+    </li>
+  </ul>
+</header>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const toggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  // Cambia el fondo del navbar al hacer scroll
+  const onScroll = () => {
+    if (!navbar) return;
+    if (window.scrollY > 40) {
+      navbar.classList.add('bg-mocha/95', 'backdrop-blur-sm', 'shadow-lg');
+      navbar.dataset.state = 'scrolled';
+    } else {
+      navbar.classList.remove('bg-mocha/95', 'backdrop-blur-sm', 'shadow-lg');
+      navbar.dataset.state = 'top';
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Menú hamburguesa
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('flex');
+    mobileMenu?.classList.toggle('hidden');
+    mobileMenu?.classList.toggle('flex');
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.classList.toggle('is-open');
+  });
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<style>
+  #menu-toggle.is-open .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #menu-toggle.is-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle.is-open .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+const productos = [
+  {
+    nombre: "Espresso Doble",
+    desc: "Blend de la casa con notas de cacao y avellanas.",
+    precio: "$3.50",
+    badge: "Favorito",
+    color: "bg-amber-700"
+  },
+  {
+    nombre: "Flat White",
+    desc: "Leche microespumada y doble shot de espresso.",
+    precio: "$4.30",
+    badge: "",
+    color: "bg-stone-700"
+  },
+  {
+    nombre: "Cold Brew",
+    desc: "Macerado durante 18 horas para un sabor suave.",
+    precio: "$4.50",
+    badge: "Nuevo",
+    color: "bg-sky-700"
+  },
+  {
+    nombre: "Mocha",
+    desc: "Chocolate belga, espresso y leche vaporizada.",
+    precio: "$4.80",
+    badge: "",
+    color: "bg-rose-700"
+  },
+  {
+    nombre: "Latte Vainilla",
+    desc: "Espresso con leche y un toque de vainilla natural.",
+    precio: "$4.20",
+    badge: "",
+    color: "bg-orange-700"
+  },
+  {
+    nombre: "Croissant Artesanal",
+    desc: "Horneado cada mañana con mantequilla francesa.",
+    precio: "$3.90",
+    badge: "",
+    color: "bg-yellow-700"
+  }
+];
+---
+
+<section id="menu" class="bg-mocha py-24 px-6">
+  <div class="mx-auto max-w-6xl">
+
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <span class="menu-subtitle text-sm uppercase tracking-[0.3em] text-latte">
+        Nuestra selección
+      </span>
+
+      <h2 class="menu-title mt-4 font-display text-4xl text-cream">
+        Café preparado con pasión
+      </h2>
+
+      <p class="menu-description mt-5 text-lg text-cream/70">
+        Cada bebida se prepara al momento con granos de especialidad recién tostados.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        productos.map((p) => (
+          <article class="menu-card rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-latte/40 hover:bg-white/10">
+
+            <div class="mb-5 flex items-center justify-between">
+
+              <div class={`menu-icon h-12 w-12 rounded-full ${p.color}`}></div>
+
+              {
+                p.badge && (
+                  <span class="rounded-full bg-latte px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mocha">
+                    {p.badge}
+                  </span>
+                )
+              }
+
+            </div>
+
+            <h3 class="menu-name font-display text-2xl text-cream">
+              {p.nombre}
+            </h3>
+
+            <p class="mt-3 text-sm leading-relaxed text-cream/70">
+              {p.desc}
+            </p>
+
+            <div class="mt-6 flex items-center justify-between border-t border-white/10 pt-5">
+
+              <span class="text-sm uppercase tracking-wider text-latte">
+                Desde
+              </span>
+
+              <span class="menu-price font-display text-2xl text-cream">
+                {p.precio}
+              </span>
+
+            </div>
+
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="menu-button mt-14 text-center">
+      <a
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex rounded-full border border-latte px-6 py-3 text-cream transition-all duration-300 hover:bg-latte hover:text-mocha"
+      >
+        Ver carta completa
+      </a>
+    </div>
+
+  </div>
+</section>w

@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Café Aroma — Café artesanal de especialidad',
+  description = 'El mejor café artesanal de la ciudad. Café de especialidad desde 2018, tostado y preparado con dedicación.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2C1810" />
+  </head>
+
+  <body class="bg-cream text-espresso antialiased">
+    <slot />
+
+    <script type="module" src="/src/scripts/main.ts"></script>
+  </body>
+</html>

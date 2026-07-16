@@ -1,0 +1,70 @@
+---
+const imagenes = [
+  { src: '/images/gallery-1.jpg', alt: 'Latte art en forma de roseta', tall: true },
+  { src: '/images/gallery-1.jpg', alt: 'Granos de café tostados', tall: false },
+  { src: '/images/gallery-1.jpg', alt: 'Barista preparando espresso', tall: false },
+  { src: '/images/gallery-1.jpg', alt: 'Interior del local Café Aroma', tall: true },
+  { src: '/images/gallery-1.jpg', alt: 'Mesa con café y croissant', tall: false },
+  { src: '/images/gallery-1.jpg', alt: 'Detalle de la máquina de espresso', tall: false },
+  { src: '/images/gallery-1.jpg', alt: 'Café para llevar', tall: true },
+];
+---
+
+<section id="galeria" class="py-24 md:py-32 px-6 md:px-10 bg-cream">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center max-w-xl mx-auto mb-14">
+      <p class="text-latte tracking-[0.25em] text-xs uppercase mb-4">Momentos</p>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold text-espresso">Galería</h2>
+    </div>
+
+    <div class="gallery-grid columns-1 sm:columns-2 lg:columns-4 gap-4 [column-fill:_balance]">
+      {imagenes.map((img) => (
+        <div
+          class:list={[
+            'gallery-item group relative mb-4 break-inside-avoid overflow-hidden rounded-xl cursor-pointer',
+            img.tall ? 'aspect-[3/4]' : 'aspect-square',
+          ]}
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full h-full object-cover transition-transform duration-500 ease-power3-out group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/50 transition-colors duration-400 flex items-center justify-center">
+            <svg
+              class="w-8 h-8 text-cream opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.gallery-item', {
+    scale: 0.85,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    stagger: 0.08,
+    scrollTrigger: {
+      trigger: '.gallery-grid',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+</script>
