@@ -1,27 +1,36 @@
----
----
-
 <section
   id="inicio"
   class="relative h-[100svh] min-h-[560px] w-full overflow-hidden flex items-center justify-center"
 >
-  <div id="hero-bg" class="absolute inset-0 scale-110">
+<div id="hero-curtain" class="absolute inset-0 z-30 bg-mocha"></div>
+  <div id="hero-bg" class="absolute inset-0">
     <img
       src="images/backgroundHero.jpg"
       alt="Barista preparando un café artesanal en Café Aroma"
       class="w-full h-full object-cover"
     />
-    <div class="absolute inset-0 bg-gradient-to-b from-espresso/70 via-espresso/50 to-espresso/80"></div> 
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-espresso/70 via-espresso/50 to-espresso/80"
+    >
+    </div>
   </div>
-
   <div class="relative z-10 text-center px-6 max-w-2xl">
-    <p id="hero-eyebrow" class="opacity-0 text-latte tracking-[0.3em] text-xs md:text-sm uppercase mb-4">
-      NombreMarca 
+    <p
+      id="hero-eyebrow"
+      class="text-latte tracking-[0.3em] text-xs md:text-sm uppercase mb-4"
+    >
+      NombreMarca
     </p>
-    <h1 id="hero-title" class="opacity-0 font-display text-4xl sm:text-5xl md:text-6xl font-semibold text-cream leading-tight">
+    <h1
+      id="hero-title"
+      class="font-display text-4xl sm:text-5xl md:text-6xl font-semibold text-cream leading-tight"
+    >
       El mejor café artesanal<br class="hidden sm:block" /> de la ciudad
     </h1>
-    <div id="hero-cta" class="opacity-0 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+    <div
+      id="hero-cta"
+      class=" mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+    >
       <a
         href="#menu"
         class="btn-primary border border-roast border-2 text-cream px-8 py-3.5 rounded-full font-medium transition-all duration-300 hover:bg-latte hover:-translate-y-0.5 hover:shadow-lg hover:shadow-roast/30"
@@ -36,30 +45,4 @@
       </a>
     </div>
   </div>
-
-
 </section>
-
-<script>
-  import gsap from 'gsap';
-
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
-  tl.to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.6 }, 0.1)
-    .from('#hero-eyebrow', { y: 10 }, 0.1)
-    .to('#hero-title', { opacity: 1 }, 0.3)
-    .from('#hero-title', { y: 24 }, 0.3)
-    .to('#hero-cta', { opacity: 1 }, 0.6)
-    .from('#hero-cta', { y: 16 }, 0.6)
-    .to('#hero-steam', { opacity: 1, duration: 1.2 }, 0.8);
-
-  gsap.to('#hero-bg', { scale: 1, duration: 12, ease: 'sine.out' });
-
-  gsap.to('.steam-path', {
-    y: -30,
-    opacity: 0,
-    duration: 4,
-    repeat: -1,
-    ease: 'sine.inOut',
-    stagger: 0.6,
-  });
-</script>
