@@ -1,67 +1,116 @@
 ---
 ---
 
-<section id="sobre-nosotros" class="relative py-24 md:py-32 px-6 md:px-10 bg-cream overflow-hidden">
-  <div class="mx-auto max-w-6xl grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-    <div class="about-image relative">
-      <div class="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-xl shadow-espresso/10">
+<section
+  id="sobre-nosotros"
+  class="relative py-24 md:py-32 px-6 md:px-10 bg-cream"
+>
+  <div
+    class="mx-auto max-w-6xl grid md:grid-cols-2 gap-12 md:gap-20 items-center"
+  >
+
+    <!-- Imagen -->
+    <div class="about-image about-photo relative pb-10">
+
+      <!-- ESTE CONTENEDOR ES EL QUE SE ANIMA -->
+      <div
+        class="about-photo-frame relative rounded-2xl overflow-hidden aspect-[4/5] shadow-xl shadow-espresso/10"
+      >
         <img
-          src="/images/about-coffee.jpg"
+          src="/images/gallery-1.jpg"
           alt="Granos de café recién tostados en Café Aroma"
           class="w-full h-full object-cover"
         />
       </div>
-      <div class="absolute -bottom-6 -right-6 hidden sm:block bg-mocha text-cream rounded-2xl px-6 py-5 shadow-lg">
-        <p class="font-display text-3xl font-semibold leading-none">2018</p>
-        <p class="text-xs tracking-wide text-cream/70 mt-1">Desde entonces, cada taza</p>
+
+      <!-- Badge -->
+      <div
+        class="about-badge absolute z-20 -bottom-0 -right-8 hidden sm:block bg-mocha text-cream rounded-2xl px-6 py-5 shadow-2xl"
+      >
+        <p class="font-display text-3xl font-semibold leading-none">
+          2018
+        </p>
+
+        <p class="text-xs tracking-wide text-cream/70 mt-1">
+          Desde entonces, cada taza
+        </p>
       </div>
+
     </div>
 
+    <!-- Texto -->
     <div class="about-text">
-      <p class="text-latte tracking-[0.25em] text-xs uppercase mb-4">Nuestra historia</p>
-      <h2 class="font-display text-3xl md:text-4xl font-semibold text-espresso mb-6 leading-snug">
+
+      <p class="text-latte tracking-[0.25em] text-xs uppercase mb-4">
+        Nuestra historia
+      </p>
+
+      <h2
+        class="about-heading font-display text-3xl md:text-4xl font-semibold text-espresso mb-6 leading-snug"
+      >
         Café de especialidad, hecho con paciencia
       </h2>
-      <p class="text-espresso/80 leading-relaxed mb-4">
-        Desde 2018 seleccionamos granos de origen único y los tostamos en pequeños lotes para
-        conservar cada matiz de aroma y sabor. Creemos que el buen café empieza mucho antes de la
-        taza: en la finca, en el tueste y en las manos que lo preparan.
-      </p>
-      <p class="text-espresso/80 leading-relaxed">
-        Hoy somos un lugar de encuentro para quienes valoran lo hecho con calma, con ingredientes
-        reales y con la misma dedicación del primer día.
+
+      <p class="about-copy text-espresso/80 leading-relaxed mb-4">
+        Desde 2018 seleccionamos granos de origen único y los tostamos en
+        pequeños lotes para conservar cada matiz de aroma y sabor. Creemos que
+        el buen café empieza mucho antes de la taza: en la finca, en el tueste
+        y en las manos que lo preparan.
       </p>
 
-      <div class="mt-8 grid grid-cols-3 gap-6 border-t border-espresso/10 pt-6">
-        <div>
-          <p class="font-display text-2xl font-semibold text-roast">100%</p>
-          <p class="text-xs text-espresso/60 mt-1">Grano de origen</p>
+      <p class="about-copy text-espresso/80 leading-relaxed">
+        Hoy somos un lugar de encuentro para quienes valoran lo hecho con
+        calma, con ingredientes reales y con la misma dedicación del primer
+        día.
+      </p>
+
+      <div
+        class="about-stats-accent mt-8 h-px bg-roast origin-left"
+      ></div>
+
+      <div
+        class="mt-6 grid grid-cols-3 gap-6 border-t border-espresso/10 pt-6"
+      >
+
+        <div class="about-stat">
+          <p
+            class="about-stat-value font-display text-2xl font-semibold text-roast"
+          >
+            100%
+          </p>
+
+          <p class="text-xs text-espresso/60 mt-1">
+            Grano de origen
+          </p>
         </div>
-        <div>
-          <p class="font-display text-2xl font-semibold text-roast">6+</p>
-          <p class="text-xs text-espresso/60 mt-1">Años de tueste propio</p>
+
+        <div class="about-stat">
+          <p
+            class="about-stat-value font-display text-2xl font-semibold text-roast"
+          >
+            6+
+          </p>
+
+          <p class="text-xs text-espresso/60 mt-1">
+            Años de tueste propio
+          </p>
         </div>
-        <div>
-          <p class="font-display text-2xl font-semibold text-roast">3</p>
-          <p class="text-xs text-espresso/60 mt-1">Locales en la ciudad</p>
+
+        <div class="about-stat">
+          <p
+            class="about-stat-value font-display text-2xl font-semibold text-roast"
+          >
+            3
+          </p>
+
+          <p class="text-xs text-espresso/60 mt-1">
+            Locales en la ciudad
+          </p>
         </div>
+
       </div>
+
     </div>
+
   </div>
 </section>
-
-<script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const trigger = {
-    trigger: '#sobre-nosotros',
-    start: 'top 70%',
-    toggleActions: 'play none none reverse',
-  };
-
-  gsap.from('.about-image', { x: -60, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: trigger });
-  gsap.from('.about-text', { x: 60, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: trigger });
-</script>
