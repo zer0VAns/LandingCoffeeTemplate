@@ -75,7 +75,6 @@ const links = [
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  // Cambia el fondo del navbar al hacer scroll
   const onScroll = () => {
     if (!navbar) return;
     if (window.scrollY > 40) {
@@ -89,7 +88,6 @@ const links = [
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Menú hamburguesa
   toggle?.addEventListener('click', () => {
     const isOpen = mobileMenu?.classList.contains('flex');
     mobileMenu?.classList.toggle('hidden');
